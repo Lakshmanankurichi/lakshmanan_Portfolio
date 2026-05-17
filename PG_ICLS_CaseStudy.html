@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P&G ICLS — UX Case Study · Lakshmanan Kurichi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pg-orange: #E8611A;
+  --pg-dark: #0D0D0D;
+  --pg-cream: #FAF8F3;
+  --pg-sand: #F0EBE0;
+  --pg-text: #1A1A1A;
+  --pg-muted: #6B6760;
+  --pg-border: rgba(0,0,0,0.08);
+  --pg-white: #FFFFFF;
+  --pg-accent: #1A3A5C;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--pg-cream);
+  color: var(--pg-text);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--pg-dark);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 48px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(232,97,26,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(26,58,92,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; z-index: 2;
+}
+
+.cover-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+.cover-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--pg-orange);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(232,97,26,0.3);
+  padding: 6px 14px;
+  border-radius: 99px;
+}
+
+.cover-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative; z-index: 2;
+  padding: 80px 0 60px;
+}
+
+.cover-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pg-orange);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cover-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--pg-orange);
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 700;
+  color: var(--pg-white);
+  line-height: 1.1;
+  max-width: 820px;
+  margin-bottom: 20px;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: var(--pg-orange);
+}
+
+.cover-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 580px;
+  line-height: 1.6;
+  margin-bottom: 52px;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.meta-item { display: flex; flex-direction: column; gap: 4px; }
+.meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.meta-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+}
+
+.cover-scroll {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative; z-index: 2;
+}
+
+.cover-scroll::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 1100px; margin: 0 auto; padding: 0 64px; }
+
+/* ── IMPACT STRIP ── */
+.impact-strip {
+  background: var(--pg-orange);
+  padding: 52px 64px;
+}
+
+.impact-strip .page {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.impact-num {
+  padding: 0 40px 0 0;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.impact-num:first-child { padding-left: 0; }
+.impact-num:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+.impact-num:not(:first-child):not(:last-child) { padding: 0 40px; }
+
+.impact-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.impact-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+}
+
+/* ── SECTIONS ── */
+section { padding: 96px 0; }
+
+.section-marker {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pg-orange);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-marker span {
+  color: rgba(0,0,0,0.2);
+  font-size: 9px;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--pg-text);
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+h2.section-title em {
+  font-style: italic;
+  color: var(--pg-orange);
+}
+
+.lead {
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--pg-muted);
+  max-width: 620px;
+  line-height: 1.7;
+  margin-bottom: 52px;
+}
+
+/* ── CONTEXT SECTION ── */
+.context-bg {
+  background: var(--pg-dark);
+  color: white;
+}
+
+.context-bg .section-marker { color: var(--pg-orange); }
+.context-bg .section-marker span { color: rgba(255,255,255,0.2); }
+.context-bg h2.section-title { color: white; }
+.context-bg .lead { color: rgba(255,255,255,0.55); }
+
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 52px;
+}
+
+.context-card {
+  background: rgba(255,255,255,0.04);
+  padding: 36px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.context-card:first-child { border-radius: 12px 0 0 0; }
+.context-card:nth-child(2) { border-radius: 0 12px 0 0; }
+.context-card:nth-child(3) { border-radius: 0 0 0 12px; }
+.context-card:last-child { border-radius: 0 0 12px 0; }
+
+.context-card-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(232,97,26,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+
+.context-card-icon svg { width: 18px; height: 18px; stroke: var(--pg-orange); fill: none; stroke-width: 1.5; }
+
+.context-card h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.context-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  background: var(--pg-sand);
+  border-left: 3px solid var(--pg-orange);
+  padding: 40px 48px;
+  margin: 52px 0;
+  border-radius: 0 12px 12px 0;
+}
+
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--pg-text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.quote-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--pg-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── SCREENS SECTION ── */
+.screens-bg { background: var(--pg-sand); }
+
+.screen-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 52px;
+}
+
+.screen-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--pg-border);
+}
+
+.screen-card.featured {
+  grid-column: span 2;
+}
+
+.screen-img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid var(--pg-border);
+}
+
+.screen-label {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.screen-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pg-text);
+  margin-bottom: 3px;
+}
+
+.screen-desc {
+  font-size: 12px;
+  color: var(--pg-muted);
+  line-height: 1.5;
+}
+
+.screen-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--pg-orange);
+  flex-shrink: 0;
+}
+
+/* ── PROCESS ── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 52px;
+}
+
+.process-step {
+  padding: 36px 32px;
+  background: var(--pg-white);
+  border: 1px solid var(--pg-border);
+  position: relative;
+}
+
+.process-step:first-child { border-radius: 12px 0 0 12px; }
+.process-step:last-child { border-radius: 0 12px 12px 0; }
+
+.step-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(232,97,26,0.08);
+  line-height: 1;
+  position: absolute;
+  top: 20px; right: 24px;
+}
+
+.step-phase {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pg-orange);
+  margin-bottom: 12px;
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--pg-text);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.step-body {
+  font-size: 14px;
+  color: var(--pg-muted);
+  line-height: 1.65;
+}
+
+.step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.step-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  background: var(--pg-sand);
+  color: var(--pg-muted);
+  border-radius: 99px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── DECISIONS ── */
+.decisions-bg { background: var(--pg-dark); }
+.decisions-bg .section-marker { color: var(--pg-orange); }
+.decisions-bg .section-marker span { color: rgba(255,255,255,0.2); }
+.decisions-bg h2.section-title { color: white; }
+.decisions-bg .lead { color: rgba(255,255,255,0.5); }
+
+.decision-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 52px;
+}
+
+.decision-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.decision-item:first-child { border-radius: 12px 12px 0 0; }
+.decision-item:last-child { border-radius: 0 0 12px 12px; }
+
+.decision-num {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--pg-orange);
+}
+
+.decision-problem {
+  padding: 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.decision-fix { padding: 32px; }
+
+.decision-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 10px;
+}
+
+.decision-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.decision-body {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* ── RESULTS ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.result-card {
+  padding: 36px 32px;
+  border: 1px solid var(--pg-border);
+  border-radius: 16px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--pg-orange);
+}
+
+.result-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--pg-text);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.result-big span {
+  color: var(--pg-orange);
+}
+
+.result-what {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pg-text);
+  margin-bottom: 8px;
+}
+
+.result-how {
+  font-size: 13px;
+  color: var(--pg-muted);
+  line-height: 1.5;
+}
+
+/* ── LEARNINGS ── */
+.learnings-bg { background: var(--pg-sand); }
+
+.learning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 52px;
+  border: 1px solid var(--pg-border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+}
+
+.learning-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--pg-border);
+}
+
+.learning-item:last-child { border-bottom: none; }
+
+.learning-n {
+  padding: 32px 24px;
+  border-right: 1px solid var(--pg-border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--pg-orange);
+}
+
+.learning-content { padding: 32px 36px; }
+
+.learning-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--pg-text);
+  margin-bottom: 8px;
+}
+
+.learning-body {
+  font-size: 14px;
+  color: var(--pg-muted);
+  line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--pg-dark);
+  padding: 72px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-left {}
+
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.footer-role {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover { color: var(--pg-orange); }
+
+.footer-next {
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ── TRANSITIONS ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <nav class="cover-nav">
+    <div class="cover-logo">Lakshmanan Kurichi · Portfolio</div>
+    <div class="cover-tag">Case Study 01</div>
+  </nav>
+
+  <div class="cover-body fade-up">
+    <div class="cover-eyebrow">Enterprise UX · P&G ICLS Platform</div>
+    <h1 class="cover-title">Unifying the <em>Consumer Research</em> Platform</h1>
+    <p class="cover-subtitle">How I transformed 7 fragmented research tools into one unified platform that drives P&G's billion-dollar product decisions — without touching the backend.</p>
+    <div class="cover-meta">
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Lead UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">P&G via LTIMindtree</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">7 Months</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Team</span>
+        <span class="meta-value">3 Designers</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Platform</span>
+        <span class="meta-value">icls.pg.com · Live</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-scroll">Scroll to explore</div>
+</div>
+
+<!-- IMPACT STRIP -->
+<div class="impact-strip">
+  <div class="impact-strip page" style="max-width:1100px">
+    <div class="impact-num">
+      <div class="impact-number">7→1</div>
+      <div class="impact-label">Research tools consolidated into a single platform</div>
+    </div>
+    <div class="impact-num">
+      <div class="impact-number">58%</div>
+      <div class="impact-label">Reduction in core flow steps (12 steps → 5)</div>
+    </div>
+    <div class="impact-num">
+      <div class="impact-number">2hrs</div>
+      <div class="impact-label">Saved per study owner per week</div>
+    </div>
+    <div class="impact-num">
+      <div class="impact-number">$800M</div>
+      <div class="impact-label">Annual research budget managed through the platform</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT SECTION -->
+<section class="context-bg">
+  <div class="page">
+    <div class="section-marker">01 <span>—</span> Context</div>
+    <h2 class="section-title">This platform doesn't just track research. <em>It runs P&G's decisions.</em></h2>
+    <p class="lead">Budget allocations. Production runs. Distribution plans. New product launches. Every one of these decisions traces back to data collected through ICLS — the Integrated Consumer Learning Solutions platform.</p>
+
+    <div class="context-grid fade-up">
+      <div class="context-card">
+        <div class="context-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>7 Fragmented Tools</h3>
+        <p>Research teams operated across seven disconnected systems with incompatible data models, access patterns, and business logic. Studies were duplicated. Insights got lost.</p>
+      </div>
+      <div class="context-card">
+        <div class="context-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>5 Stakeholder Groups</h3>
+        <p>Study owners, administrators, design agencies, suppliers, and research analysts — each with different workflows, priorities, and assumptions about how the platform should work.</p>
+      </div>
+      <div class="context-card">
+        <div class="context-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>15-Year Legacy Backend</h3>
+        <p>Undocumented dependencies made every change a calculated risk. Replacing the backend was completely off the table. Every improvement had to be pure UX.</p>
+      </div>
+      <div class="context-card">
+        <div class="context-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Broken Flows, Real Costs</h3>
+        <p>Multiple navigation patterns, missing notifications, and 12-step forms that should take 5. When researchers abandon forms, P&G's decision data gets incomplete. The cost is downstream.</p>
+      </div>
+    </div>
+
+    <div class="quote-block fade-up" style="background: rgba(255,255,255,0.04); border-left-color: var(--pg-orange); margin-top: 48px;">
+      <div class="quote-text" style="color: rgba(255,255,255,0.85);">"We have the tools, but nobody knows how to use them. We have the data, but nobody can find it. We have the research, but it doesn't inform decisions."</div>
+      <div class="quote-source" style="color: rgba(255,255,255,0.3);">— Senior Product Manager, P&G · Week 1 Discovery</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENS SECTION -->
+<section class="screens-bg">
+  <div class="page">
+    <div class="section-marker">02 <span>—</span> The Platform</div>
+    <h2 class="section-title">The live platform — <em>icls.pg.com</em></h2>
+    <p class="lead">Four core experiences redesigned: the discovery home, study management, research commissioning, and approval tracking. Every screen is in production.</p>
+
+    <div class="screen-showcase fade-up">
+      <div class="screen-card featured">
+        <img src="Group_3087.png" alt="ICLS Home Dashboard — AI-powered discovery with 5 research modules" class="screen-img">
+        <div class="screen-label">
+          <div>
+            <div class="screen-name">Discovery Dashboard — Home</div>
+            <div class="screen-desc">AI-powered "What do you want to discover today?" search. Five research modules — Design, Learn, Generate, Analyze, Assess — unified under one navigation. Replaces 7 separate entry points.</div>
+          </div>
+          <div class="screen-num">01</div>
+        </div>
+      </div>
+
+      <div class="screen-card">
+        <img src="Group_3090.png" alt="Manage Studies — $800MM budget tracking with full study list" class="screen-img">
+        <div class="screen-label">
+          <div>
+            <div class="screen-name">Study Management</div>
+            <div class="screen-desc">$800MM planned budget visible at a glance. Status tracking, approvals, and bulk actions for all active studies. Reduced from a multi-screen workflow to a single view.</div>
+          </div>
+          <div class="screen-num">02</div>
+        </div>
+      </div>
+
+      <div class="screen-card">
+        <img src="Group_3091.png" alt="Generate PO (CRP) form — AI-assisted research commissioning" class="screen-img">
+        <div class="screen-label">
+          <div>
+            <div class="screen-name">Research Commissioning (PO/CRP)</div>
+            <div class="screen-desc">AI-integrated form flow for commissioning consumer research. Smart field suggestions, auto-fill from prior studies. The highest-friction task, made fast.</div>
+          </div>
+          <div class="screen-num">03</div>
+        </div>
+      </div>
+
+      <div class="screen-card featured">
+        <img src="Group_3092.png" alt="Study detail with approval workflow — Planned, Design Approval, Financial Approval, Execution, Completed" class="screen-img">
+        <div class="screen-label">
+          <div>
+            <div class="screen-name">Study Detail & Approval Workflow</div>
+            <div class="screen-desc">Clear 5-stage approval pipeline: Planned → Design Approval → Financial Approval → Execution → Completed. Full audit trail with timestamps, assignees, and document access. No more email chains.</div>
+          </div>
+          <div class="screen-num">04</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="page">
+    <div class="section-marker">03 <span>—</span> Process</div>
+    <h2 class="section-title">Three phases. <em>Seven months.</em></h2>
+    <p class="lead">Before a single wireframe, I spent two months creating the organisational alignment that made everything else possible.</p>
+
+    <div class="process-steps fade-up">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <div class="step-phase">Month 1–2</div>
+        <div class="step-title">Align before you design</div>
+        <div class="step-body">Facilitated 12+ workshops across 5 business units. Journey mapping, stakeholder discovery, prioritisation sessions. Reduced a 24-feature wishlist to 6 validated core experiences. Built the shared mental model that didn't exist.</div>
+        <div class="step-tags">
+          <span class="step-tag">12 workshops</span>
+          <span class="step-tag">Journey mapping</span>
+          <span class="step-tag">MoSCoW</span>
+          <span class="step-tag">IA workshops</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <div class="step-phase">Month 3–5</div>
+        <div class="step-title">Fix flows, not backend</div>
+        <div class="step-body">Full flow audit. Identified every redundant step, dead end, and drop-off point. Collapsed 12-step flows to 5. Rebuilt navigation from user mental models. Designed contextual notifications. Integrated AI into form-filling — the highest-friction task.</div>
+        <div class="step-tags">
+          <span class="step-tag">Flow audit</span>
+          <span class="step-tag">Navigation redesign</span>
+          <span class="step-tag">AI integration</span>
+          <span class="step-tag">Notification system</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <div class="step-phase">Month 5–7</div>
+        <div class="step-title">Ship with precision</div>
+        <div class="step-body">High-fidelity UI in Figma, interactive prototypes, developer handoff specs, user stories with acceptance criteria. Because alignment was done first, design moved fast. Stakeholder feedback was specific. We shipped on time.</div>
+        <div class="step-tags">
+          <span class="step-tag">Figma</span>
+          <span class="step-tag">Prototypes</span>
+          <span class="step-tag">Dev handoff</span>
+          <span class="step-tag">On-time delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="decisions-bg">
+  <div class="page">
+    <div class="section-marker">04 <span>—</span> Key Decisions</div>
+    <h2 class="section-title">Why I made <em>these choices</em></h2>
+    <p class="lead">Senior UX work is about the decisions nobody sees. Here are the four that shaped every outcome.</p>
+
+    <div class="decision-list fade-up">
+      <div class="decision-item">
+        <div class="decision-num">D1</div>
+        <div class="decision-problem">
+          <div class="decision-label">The situation</div>
+          <div class="decision-title">Five teams, five different realities</div>
+          <div class="decision-body">Stakeholders had conflicting assumptions about how consumer research should work. Starting design would have meant redesigning everything twice as assumptions surfaced mid-build.</div>
+        </div>
+        <div class="decision-fix">
+          <div class="decision-label">The decision</div>
+          <div class="decision-title">Spend 2 months on alignment before any UI</div>
+          <div class="decision-body">Facilitation is UX. The workshops I ran in month 1 and 2 weren't overhead — they were the most valuable design work of the entire project. They prevented 4 months of rework.</div>
+        </div>
+      </div>
+
+      <div class="decision-item">
+        <div class="decision-num">D2</div>
+        <div class="decision-problem">
+          <div class="decision-label">The situation</div>
+          <div class="decision-title">Complex forms, high abandonment</div>
+          <div class="decision-body">The CRP form was the most-used and most-abandoned flow. The instinct was to add help text, tooltips, and onboarding overlays to make it clearer.</div>
+        </div>
+        <div class="decision-fix">
+          <div class="decision-label">The decision</div>
+          <div class="decision-title">Remove steps, don't explain them</div>
+          <div class="decision-body">A user who doesn't need instructions is better than a user who reads great instructions. Reduced the form from 12 steps to 5. Then added AI assistance for what remained.</div>
+        </div>
+      </div>
+
+      <div class="decision-item">
+        <div class="decision-num">D3</div>
+        <div class="decision-problem">
+          <div class="decision-label">The situation</div>
+          <div class="decision-title">15-year-old backend, can't be changed</div>
+          <div class="decision-body">Every change was a calculated risk. The constraint felt like a hard ceiling on what was achievable. The easy answer was to ask for backend changes.</div>
+        </div>
+        <div class="decision-fix">
+          <div class="decision-label">The decision</div>
+          <div class="decision-title">Treat the constraint as a design brief</div>
+          <div class="decision-body">No backend crutch meant every decision had to justify itself purely on user value. This produced simpler, more elegant solutions — and proved that legacy systems aren't the enemy. Poor UX on top of them is.</div>
+        </div>
+      </div>
+
+      <div class="decision-item">
+        <div class="decision-num">D4</div>
+        <div class="decision-problem">
+          <div class="decision-label">The situation</div>
+          <div class="decision-title">Pressure to add AI everywhere</div>
+          <div class="decision-body">AI was available. The stakeholder ask was to "make it AI-powered." The easy path was to add AI across the entire platform as a headline feature.</div>
+        </div>
+        <div class="decision-fix">
+          <div class="decision-label">The decision</div>
+          <div class="decision-title">AI at the exact point of highest friction</div>
+          <div class="decision-body">Placed AI only in form-filling — the moment users were most likely to abandon or rush, producing bad data. Specificity made it immediately valuable. Phase 2 will expand from this proven foundation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section>
+  <div class="page">
+    <div class="section-marker">05 <span>—</span> Results</div>
+    <h2 class="section-title">What <em>shipped</em></h2>
+    <p class="lead">Delivered on time, within a legacy constraint, across five stakeholder groups — and approved for Phase 2.</p>
+
+    <div class="results-grid fade-up">
+      <div class="result-card">
+        <div class="result-big">7<span>→1</span></div>
+        <div class="result-what">Tools consolidated</div>
+        <div class="result-how">Seven fragmented research tools unified under one platform. One login, one navigation, one data model for users.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-big">58<span>%</span></div>
+        <div class="result-what">Flow reduction</div>
+        <div class="result-how">Core research submission reduced from ~12 steps to ~5. Same backend, dramatically simpler experience.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-big">2<span>hrs</span></div>
+        <div class="result-what">Saved weekly</div>
+        <div class="result-how">Study owners reported saving 2+ hours per week on research discovery and status tracking.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-big">12<span>+</span></div>
+        <div class="result-what">Workshops facilitated</div>
+        <div class="result-how">Across 5 business units. Created the organisational alignment that made fast design execution possible.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-big">100<span>%</span></div>
+        <div class="result-what">On-time delivery</div>
+        <div class="result-how">Full design system and developer handoff documentation delivered within the 7-month timeline.</div>
+      </div>
+      <div class="result-card">
+        <div class="result-big">Ph.<span>2</span></div>
+        <div class="result-what">Approved</div>
+        <div class="result-how">End-to-end AI integration approved and in planning. I'm leading UX strategy for the next phase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section class="learnings-bg">
+  <div class="page">
+    <div class="section-marker">06 <span>—</span> Reflection</div>
+    <h2 class="section-title">What this project <em>taught me</em></h2>
+    <p class="lead">Seven months, five stakeholder groups, a 15-year legacy backend, and a platform that shapes billion-dollar decisions. Here's what stayed with me.</p>
+
+    <div class="learning-list fade-up">
+      <div class="learning-item">
+        <div class="learning-n">01</div>
+        <div class="learning-content">
+          <div class="learning-title">Ambiguity is the work</div>
+          <div class="learning-body">Early in my career, ambiguity was something to eliminate quickly so I could "get to the real work" of designing. Now I understand: the clarity you create in ambiguous situations is the highest-value thing a senior designer produces. The platform's first two months produced no screens — and those two months were the most impactful of the seven.</div>
+        </div>
+      </div>
+      <div class="learning-item">
+        <div class="learning-n">02</div>
+        <div class="learning-content">
+          <div class="learning-title">Facilitation is a design skill</div>
+          <div class="learning-body">The most valuable thing I designed wasn't a screen — it was the workshop that gave five stakeholder groups a shared language. Facilitation, synthesis, and building shared understanding are core UX competencies, not soft skills to delegate. This project proved it in measurable terms: 2 months of alignment prevented 4 months of rework.</div>
+        </div>
+      </div>
+      <div class="learning-item">
+        <div class="learning-n">03</div>
+        <div class="learning-content">
+          <div class="learning-title">Legacy systems aren't the enemy</div>
+          <div class="learning-body">The 15-year backend was fine. Seven years of accumulated complexity in the UI on top of it was what was breaking users. The constraint forced cleaner thinking. Every design decision had to justify itself purely on user value — no technical shortcuts. Constraint drives creativity when you lean into it rather than around it.</div>
+        </div>
+      </div>
+      <div class="learning-item">
+        <div class="learning-n">04</div>
+        <div class="learning-content">
+          <div class="learning-title">Scale changes the stakes</div>
+          <div class="learning-body">This platform doesn't serve consumers — it shapes decisions about what consumers experience. When researchers submit better data, P&G makes better product decisions. Every friction point I removed had a business cost far downstream. Designing at enterprise scale means understanding that the user's problem and the business problem are the same problem.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-name">Lakshmanan Kurichi</div>
+    <div class="footer-role">Senior UX Designer · Chennai, India · Open to 18–20 LPA roles</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://lakshmanankurichi.framer.ai" class="footer-link">Portfolio</a>
+    <a href="https://www.linkedin.com/in/lakshmanan-ux/" class="footer-link">LinkedIn</a>
+    <a href="https://www.behance.net/lakshmanankurichi" class="footer-link">Behance</a>
+    <a href="mailto:lakshmanankurichiux@gmail.com" class="footer-link">Email</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelector('.cover-body').classList.add('visible');
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmanan Kurichi — Senior UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111010;--ink2:#3a3835;--muted:#8a8680;--border:rgba(17,16,16,0.1);--surface:#F7F5F0;--white:#FDFCFA;--accent:#C4703A;--accent2:#1A3A5C}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(253,252,250,0.92);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color 0.3s}
+nav.scrolled{border-color:var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:12px;font-weight:500;color:var(--white)!important;background:var(--ink);padding:9px 20px;border-radius:99px;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.75!important}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 60px 80px;gap:80px;max-width:1280px;margin:0 auto}
+.hero-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--accent)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,5.5vw,78px);font-weight:300;line-height:1.08;margin-bottom:10px}
+.hero-name strong{font-weight:600;display:block}
+.hero-role{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,34px);font-weight:300;font-style:italic;color:var(--muted);margin-bottom:36px}
+.hero-desc{font-size:16px;font-weight:300;color:var(--ink2);line-height:1.75;max-width:460px;margin-bottom:44px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{font-size:13px;font-weight:500;color:var(--white);background:var(--ink);padding:13px 28px;border-radius:99px;text-decoration:none;letter-spacing:0.03em;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.78}
+.btn-ghost{font-size:13px;color:var(--ink);border:1px solid var(--border);padding:12px 28px;border-radius:99px;text-decoration:none;letter-spacing:0.03em;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:var(--ink)}
+.hero-right{position:relative}
+.hero-photo-box{background:var(--surface);border-radius:6px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:300;color:rgba(139,134,128,0.35);overflow:hidden}
+.hero-photo-box img{width:100%;height:100%;object-fit:cover;object-position:top}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:1px;overflow:hidden;border-radius:0 0 6px 6px}
+.h-stat{background:var(--white);padding:18px 20px}
+.h-stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;line-height:1;color:var(--ink)}
+.h-stat-n span{color:var(--accent);font-style:italic}
+.h-stat-l{font-size:12px;color:var(--muted);margin-top:3px}
+
+.marquee-wrap{background:var(--ink);padding:16px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:ticker 24s linear infinite}
+.m-item{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 36px}
+.m-dot{color:var(--accent)}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.work{padding:120px 60px;max-width:1280px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+.s-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,52px);font-weight:300;line-height:1.15}
+.s-title em{font-style:italic}
+.s-all{font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color 0.2s}
+.s-all:hover{color:var(--ink)}
+
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.pc{background:var(--white);padding:44px;text-decoration:none;display:block;transition:background 0.25s;cursor:pointer}
+.pc:hover{background:var(--surface)}
+.pc.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.pc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.pc-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em}
+.pc-tag{font-size:11px;color:var(--accent);background:rgba(196,112,58,0.09);padding:4px 12px;border-radius:99px}
+.pc-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--surface);display:block;margin-bottom:26px}
+.pc-img-ph{width:100%;aspect-ratio:16/9;border-radius:6px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:26px;overflow:hidden}
+.pc-img-big{width:100%;aspect-ratio:4/3;border-radius:8px;background:var(--surface);overflow:hidden;display:block}
+.pc-img-big img{width:100%;height:100%;object-fit:cover}
+.pc-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+.pc-d{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.pc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11px;color:var(--ink2);border:1px solid var(--border);padding:4px 12px;border-radius:99px}
+.pc-arrow{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);font-weight:500;margin-top:18px;transition:gap 0.2s}
+.pc:hover .pc-arrow{gap:10px}
+
+.about-section{background:var(--surface);padding:120px 60px}
+.about-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:100px;align-items:start}
+.about-sticky{position:sticky;top:120px}
+.ab-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.ab-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;line-height:1.15;margin-bottom:28px}
+.ab-h em{font-style:italic}
+.ab-loc{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);margin-bottom:28px}
+.ab-links{display:flex;flex-direction:column}
+.ab-link{font-size:13px;color:var(--ink2);text-decoration:none;display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.ab-link:hover{color:var(--accent)}
+.ab-bio{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:300;line-height:1.65;color:var(--ink2);margin-bottom:36px}
+.ab-bio em{font-style:italic;color:var(--ink)}
+.exp-list{display:flex;flex-direction:column}
+.exp-row{display:grid;grid-template-columns:1fr auto;padding:18px 0;border-bottom:1px solid var(--border);align-items:baseline}
+.exp-row:first-child{border-top:1px solid var(--border)}
+.exp-role{font-size:15px;font-weight:500;color:var(--ink)}
+.exp-co{font-size:13px;color:var(--muted);margin-top:2px}
+.exp-yr{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.sk{font-size:12px;color:var(--ink2);border:1px solid var(--border);padding:6px 16px;border-radius:99px}
+
+.contact-section{padding:120px 60px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.contact-h{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,70px);font-weight:300;line-height:1.1;margin-bottom:28px}
+.contact-h em{font-style:italic;color:var(--accent)}
+.contact-note{font-size:15px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:36px}
+.contact-email{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:6px;display:inline-block;transition:border-color 0.2s,color 0.2s}
+.contact-email:hover{border-color:var(--accent);color:var(--accent)}
+.cc-list{display:flex;flex-direction:column;gap:10px}
+.cc{display:flex;justify-content:space-between;align-items:center;padding:17px 20px;border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.2s,background 0.2s}
+.cc:hover{border-color:var(--ink);background:var(--surface)}
+.cc-name{font-size:13px;font-weight:500;color:var(--ink)}
+.cc-handle{font-size:12px;color:var(--muted)}
+.cc-arr{font-size:16px;color:var(--muted)}
+
+footer{background:var(--ink);padding:44px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.f-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(255,255,255,0.85)}
+.f-copy{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.08em}
+.f-links{display:flex;gap:22px}
+.f-links a{font-size:12px;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.2s}
+.f-links a:hover{color:rgba(255,255,255,0.65)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}.nav-links a:not(.nav-cta){display:none}
+  .hero{grid-template-columns:1fr;padding:90px 24px 60px;gap:40px}
+  .hero-right{order:-1}.hero-photo-box{aspect-ratio:16/9}
+  .work,.about-section,.contact-section{padding:72px 24px}
+  .projects-grid,.about-inner,.contact-section{grid-template-columns:1fr}
+  .pc.featured{grid-column:span 1;grid-template-columns:1fr}
+  .about-sticky{position:static}
+  .sh{flex-direction:column;align-items:flex-start;gap:14px}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Lakshmanan Kurichi</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="https://framerusercontent.com/assets/ceJej9LwhSq118HrJtDrZCFo.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="reveal">
+    <div class="hero-tag">Open to Senior UX Roles · 18–20 LPA</div>
+    <h1 class="hero-name">Lakshmanan<strong>Kurichi</strong></h1>
+    <p class="hero-role">Senior UX Designer</p>
+    <p class="hero-desc">I design enterprise products that handle real complexity — B2B commerce, workforce platforms, consumer research systems. 7+ years turning ambiguous problems into clarity that ships.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+  </div>
+  <div class="reveal d2">
+    <div class="hero-photo-box">LK</div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">7<span>+</span></div><div class="h-stat-l">Years enterprise UX</div></div>
+      <div class="h-stat"><div class="h-stat-n">4</div><div class="h-stat-l">Global brands</div></div>
+      <div class="h-stat"><div class="h-stat-n">50<span>K</span></div><div class="h-stat-l">Users impacted</div></div>
+      <div class="h-stat"><div class="h-stat-n" style="font-size:20px;font-style:italic;padding-top:6px">Open</div><div class="h-stat-l">to relocation</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item">Enterprise UX</span><span class="m-dot m-item">·</span>
+    <span class="m-item">P&amp;G · Consumer Research</span><span class="m-dot m-item">·</span>
+    <span class="m-item">B2B Commerce</span><span class="m-dot m-item">·</span>
+    <span class="m-item">WCAG Governance</span><span class="m-dot m-item">·</span>
+    <span class="m-item">AI-Assisted Design</span><span class="m-dot m-item">·</span>
+    <span class="m-item">LTIMindtree</span><span class="m-dot m-item">·</span>
+    <span class="m-item">Chennai India</span><span class="m-dot m-item">·</span>
+    <span class="m-item">Design Systems</span><span class="m-dot m-item">·</span>
+    <span class="m-item">Enterprise UX</span><span class="m-dot m-item">·</span>
+    <span class="m-item">P&amp;G · Consumer Research</span><span class="m-dot m-item">·</span>
+    <span class="m-item">B2B Commerce</span><span class="m-dot m-item">·</span>
+    <span class="m-item">WCAG Governance</span><span class="m-dot m-item">·</span>
+    <span class="m-item">AI-Assisted Design</span><span class="m-dot m-item">·</span>
+    <span class="m-item">LTIMindtree</span><span class="m-dot m-item">·</span>
+    <span class="m-item">Chennai India</span><span class="m-dot m-item">·</span>
+    <span class="m-item">Design Systems</span><span class="m-dot m-item">·</span>
+  </div>
+</div>
+
+<section class="work" id="work">
+  <div class="sh reveal">
+    <div>
+      <div class="s-eyebrow">Selected Work</div>
+      <h2 class="s-title">Enterprise problems,<br><em>elegant solutions</em></h2>
+    </div>
+    <a href="https://www.behance.net/lakshmanankurichi" target="_blank" class="s-all">All work on Behance ↗</a>
+  </div>
+
+  <div class="projects-grid reveal d1">
+    <a href="PG_ICLS_CaseStudy.html" class="pc featured">
+      <div>
+        <div class="pc-top"><span class="pc-num">01</span><span class="pc-tag">Lead Case Study · Live Platform</span></div>
+        <h3 class="pc-h">Unifying the Consumer Research Platform — P&amp;G</h3>
+        <p class="pc-d">Consolidated 7 fragmented research tools into one unified platform driving P&amp;G's product decisions. 7 months, 12+ workshops, 58% flow reduction — without touching the legacy backend.</p>
+        <div class="pc-chips">
+          <span class="chip">Enterprise SaaS</span>
+          <span class="chip">icls.pg.com Live</span>
+          <span class="chip">AI Integration</span>
+          <span class="chip">$800MM Budget Platform</span>
+        </div>
+        <div class="pc-arrow">View Case Study →</div>
+      </div>
+      <div class="pc-img-big"><img src="Group_3087.png" alt="P&G ICLS Dashboard"></div>
+    </a>
+
+    <a href="#" class="pc">
+      <div class="pc-top"><span class="pc-num">02</span><span class="pc-tag">Scale · 50,000+ Users</span></div>
+      <div class="pc-img-ph" style="border-radius:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--muted)">L&amp;T</span></div>
+      <h3 class="pc-h">Modernising Payroll &amp; HR Portal — L&amp;T</h3>
+      <p class="pc-d">Enterprise HR and payroll workflows redesigned for 50,000+ employees. Complex approvals, multi-role access, real-time status at national scale.</p>
+      <div class="pc-chips"><span class="chip">Enterprise Portal</span><span class="chip">Workflow Design</span><span class="chip">Large Scale</span></div>
+      <div class="pc-arrow">Case Study Coming →</div>
+    </a>
+
+    <a href="#" class="pc">
+      <div class="pc-top"><span class="pc-num">03</span><span class="pc-tag">Accessibility · WCAG 2.1</span></div>
+      <div class="pc-img-ph" style="border-radius:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--muted)">AkzoNobel</span></div>
+      <h3 class="pc-h">WCAG Governance Across 4 Enterprise Platforms — AkzoNobel</h3>
+      <p class="pc-d">Accessibility governance defined and implemented across four enterprise platforms. Audit frameworks, component fixes, and cross-team alignment at global scale.</p>
+      <div class="pc-chips"><span class="chip">WCAG 2.1</span><span class="chip">4 Platforms</span><span class="chip">Design System</span></div>
+      <div class="pc-arrow">Case Study Coming →</div>
+    </a>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-sticky reveal">
+      <div class="ab-label">About</div>
+      <h2 class="ab-h">Senior UX,<br><em>Chennai</em></h2>
+      <div class="ab-loc">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Chennai · Open to Remote &amp; Relocation
+      </div>
+      <div class="ab-links">
+        <a href="https://www.linkedin.com/in/lakshmanan-ux/" target="_blank" class="ab-link">LinkedIn <span>↗</span></a>
+        <a href="https://www.behance.net/lakshmanankurichi" target="_blank" class="ab-link">Behance <span>↗</span></a>
+        <a href="https://dribbble.com/lakshmanankurichi" target="_blank" class="ab-link">Dribbble <span>↗</span></a>
+        <a href="https://framerusercontent.com/assets/ceJej9LwhSq118HrJtDrZCFo.pdf" target="_blank" class="ab-link">Resume PDF <span>↓</span></a>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <p class="ab-bio">I design enterprise products that handle <em>real complexity</em> — B2B commerce, workforce platforms, consumer research systems. At LTIMindtree, I've led UX for P&amp;G, AkzoNobel, Schneider Electric, and L&amp;T.</p>
+      <p class="ab-bio" style="font-size:17px;margin-bottom:32px">What I bring: systems thinking, stakeholder alignment, and designs that actually ship. I don't just make screens — I create clarity where there wasn't any before.</p>
+      <div class="exp-list">
+        <div class="exp-row"><div><div class="exp-role">Senior UX UI Designer</div><div class="exp-co">LTIMindtree</div></div><div class="exp-yr">2022 – Present</div></div>
+        <div class="exp-row"><div><div class="exp-role">UX UI Designer</div><div class="exp-co">Hexamap Solutions</div></div><div class="exp-yr">2020 – 2022</div></div>
+        <div class="exp-row"><div><div class="exp-role">UX Designer</div><div class="exp-co">Digicollect</div></div><div class="exp-yr">2020</div></div>
+        <div class="exp-row"><div><div class="exp-role">Freelance UX Designer</div><div class="exp-co">Independent</div></div><div class="exp-yr">2019 – 2020</div></div>
+        <div class="exp-row"><div><div class="exp-role">Graphic Designer</div><div class="exp-co">IQor Global Services</div></div><div class="exp-yr">2018 – 2019</div></div>
+      </div>
+      <div class="skills-wrap">
+        <span class="sk">UX Strategy</span><span class="sk">Systems Thinking</span><span class="sk">Figma</span><span class="sk">Design Systems</span><span class="sk">User Research</span><span class="sk">Prototyping</span><span class="sk">WCAG / Accessibility</span><span class="sk">Workshop Facilitation</span><span class="sk">AI-Assisted Design</span><span class="sk">Stakeholder Alignment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <div class="s-eyebrow" style="margin-bottom:12px">Contact</div>
+    <h2 class="contact-h">Let's build something <em>great</em></h2>
+    <p class="contact-note">Looking for Senior UX Designer roles at product-first companies. If you're building something complex and need someone who thrives in ambiguity — let's talk.</p>
+    <a href="mailto:lakshmanankurichiux@gmail.com" class="contact-email">lakshmanankurichiux@gmail.com</a>
+  </div>
+  <div class="reveal d1">
+    <div class="cc-list">
+      <a href="https://www.linkedin.com/in/lakshmanan-ux/" target="_blank" class="cc"><div><div class="cc-name">LinkedIn</div><div class="cc-handle">lakshmanan-ux</div></div><span class="cc-arr">↗</span></a>
+      <a href="https://www.behance.net/lakshmanankurichi" target="_blank" class="cc"><div><div class="cc-name">Behance</div><div class="cc-handle">lakshmanankurichi</div></div><span class="cc-arr">↗</span></a>
+      <a href="https://dribbble.com/lakshmanankurichi" target="_blank" class="cc"><div><div class="cc-name">Dribbble</div><div class="cc-handle">lakshmanankurichi</div></div><span class="cc-arr">↗</span></a>
+      <a href="https://framerusercontent.com/assets/ceJej9LwhSq118HrJtDrZCFo.pdf" target="_blank" class="cc"><div><div class="cc-name">Resume</div><div class="cc-handle">Download PDF</div></div><span class="cc-arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Lakshmanan Kurichi</span>
+  <span class="f-copy">© 2026 · Chennai, India</span>
+  <div class="f-links">
+    <a href="https://www.linkedin.com/in/lakshmanan-ux/" target="_blank">LinkedIn</a>
+    <a href="https://www.behance.net/lakshmanankurichi" target="_blank">Behance</a>
+    <a href="mailto:lakshmanankurichiux@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('nav').classList.remove('scrolled');
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>20));
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal').forEach((el,i)=>{if(i<2)el.classList.add('v')});
+</script>
+</body>
+</html>
