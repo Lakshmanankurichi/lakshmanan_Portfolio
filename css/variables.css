@@ -1,0 +1,37 @@
+/* ============================================================
+   DESIGN TOKENS — Edit here to change the entire visual system
+   ============================================================ */
+:root {
+  /* Colors */
+  --bg:         #F6FAF9;
+  --surface:    #FFFFFF;
+  --ink:        #0A0A0A;
+  --teal:       #064d43;
+  --teal-hov:   #0a6b5c;
+  --teal-glow:  rgba(6, 77, 67, 0.08);
+  --teal-bord:  rgba(6, 77, 67, 0.15);
+  --mid:        #6B7280;
+  --faint:      #E8EDEC;
+  --faint2:     #F0F5F4;
+
+  /* Typography */
+  --font: 'Bricolage Grotesque', system-ui, sans-serif;
+
+  /* Shadows */
+  --sh-sm: 0 1px 3px rgba(6,77,67,0.06), 0 4px 16px rgba(6,77,67,0.04);
+  --sh-md: 0 4px 24px rgba(6,77,67,0.10), 0 1px 4px rgba(6,77,67,0.06);
+  --sh-lg: 0 20px 60px rgba(6,77,67,0.12), 0 4px 16px rgba(6,77,67,0.06);
+
+  /* Spacing */
+  --sp-xs:  8px;
+  --sp-sm:  16px;
+  --sp-md:  24px;
+  --sp-lg:  40px;
+  --sp-xl:  56px;
+  --sp-2xl: 80px;
+  --sp-3xl: 112px;
+
+  /* Easing */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}

@@ -1,0 +1,64 @@
+/* ============================================================
+   RESPONSIVE.CSS — Mobile breakpoints only
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .process-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .process-steps::before { display: none; }
+}
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .n-links { display: none; }
+
+  #hero { grid-template-columns: 1fr; padding: 80px 24px 48px; min-height: auto; }
+  .hero-r { display: none; }
+
+  #logos { padding: 36px 24px; }
+  .logo-item { padding: 12px 24px; border-right: none; }
+  .logos-row { gap: 0; justify-content: space-around; }
+
+  .work-intro { grid-template-columns: 1fr; padding: 64px 24px 40px; gap: 24px; }
+  .cs { grid-template-columns: 1fr; min-height: auto; }
+  .cs-img { height: 260px; }
+  .cs-body { padding: 36px 24px; border-left: none !important; border-right: none !important; border-top: 1px solid var(--faint); }
+  .cs.rev { direction: ltr; }
+
+  .sp-body { padding: 36px 24px; }
+  .exec-grid { grid-template-columns: 1fr; }
+  .metrics-row { grid-template-columns: 1fr 1fr; }
+
+  .process-intro { padding: 64px 24px 40px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); padding: 0 24px 64px; }
+
+  #phil { padding: 64px 24px; }
+  .phil-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  #about { grid-template-columns: 1fr; }
+  .about-l { padding: 64px 24px; border-right: none; border-bottom: 1px solid var(--faint); }
+  .about-r { padding: 48px 24px; }
+
+  #skills { padding: 64px 24px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+
+  .ai-head { grid-template-columns: 1fr; padding: 64px 24px 40px; gap: 24px; }
+  .ai-grid { grid-template-columns: 1fr; }
+  .aic { padding: 40px 24px; border-right: none !important; }
+  .aic-arr { right: 24px; }
+
+  #contact { padding: 64px 24px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+  footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+
+  #aichat { width: calc(100vw - 48px); right: 24px; }
+  #focus { bottom: 80px; }
+}
+
+@media (max-width: 600px) {
+  .hero-hed { font-size: 32px; letter-spacing: -1px; }
+  .hero-proof { gap: 20px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .metrics-row { grid-template-columns: 1fr; }
+  .contact-hed { font-size: 44px; letter-spacing: -2px; }
+}
