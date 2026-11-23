@@ -54,7 +54,7 @@ body{
   background:var(--obsidian);color:var(--text);line-height:1.6;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-body.menu-open,body.gate-open{overflow:hidden}
+body.menu-open{overflow:hidden}
 
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{text-wrap:balance;font-weight:500;letter-spacing:-.03em;line-height:1.1}
@@ -207,12 +207,8 @@ ul{list-style:none}
   background:var(--surface);overflow:hidden;transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease),background var(--dur) var(--ease)}
 .locked-card:hover{border-color:var(--line-strong);transform:translateY(-3px);background:var(--surface-2)}
 .lc-thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid var(--line)}
-.lc-thumb img{width:100%;height:100%;object-fit:cover;filter:blur(5px) saturate(.75) brightness(.62);transform:scale(1.06);transition:filter .5s var(--ease)}
-.locked-card:hover .lc-thumb img{filter:blur(3px) saturate(.9) brightness(.72)}
-.lc-thumb::after{content:"Protected";position:absolute;top:12px;right:12px;font-size:11px;color:var(--text-soft);
-  background:rgba(1,1,3,.72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A8A8B0' stroke-width='2'%3E%3Crect x='4' y='10' width='16' height='11' rx='2.5'/%3E%3Cpath d='M8 10V7a4 4 0 018 0v3'/%3E%3C/svg%3E") no-repeat 11px 50%;background-size:12px 12px;
-  border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px 5px 29px;backdrop-filter:blur(8px)}
-.ico-lock{display:inline-block;width:12px;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A8A8B0' stroke-width='2'%3E%3Crect x='4' y='10' width='16' height='11' rx='2.5'/%3E%3Cpath d='M8 10V7a4 4 0 018 0v3'/%3E%3C/svg%3E") no-repeat center/contain}
+.lc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.locked-card:hover .lc-thumb img{transform:scale(1.04)}
 .lc-pad{display:block;padding:22px 24px 24px}
 .lc-year{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-soft)}
 .locked-card h3{font-size:19px;margin:10px 0 10px}
@@ -222,10 +218,40 @@ ul{list-style:none}
 .lc-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--white)}
 .lc-cta .arrow{transition:transform var(--dur) var(--ease)}
 .locked-card:hover .lc-cta .arrow{transform:translateX(5px)}
-.access-note{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;margin-top:30px;font-size:13px;color:var(--text-muted)}
-.access-note a{color:var(--violet-soft)}
-.access-note a:hover{text-decoration:underline}
-
+  /* ---------- EXPERIMENTS ---------- */
+  .exp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+  .exp-head h3{font-size:clamp(26px,3.6vw,42px)}
+  .exp-head p{font-size:14.5px;color:var(--text-soft);max-width:520px;margin-top:10px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .filter{border:1px solid var(--line-strong);background:rgba(255,255,255,.03);color:var(--text-soft);
+    border-radius:999px;padding:9px 18px;font-size:13px;cursor:pointer;
+    transition:background var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+  .filter:hover{color:var(--white);border-color:var(--violet-soft)}
+  .filter[aria-pressed="true"]{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 8px 24px rgba(96,43,250,.35)}
+  .filter .ct{opacity:.6;margin-left:6px;font-size:11px}
+  .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .exp{display:block;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden;
+    transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease),background var(--dur) var(--ease)}
+  a.exp:hover{border-color:var(--line-strong);transform:translateY(-3px);background:var(--surface-2)}
+  .exp-thumb{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);
+    background:radial-gradient(80% 90% at 20% 10%,var(--c1,#602BFA),transparent 60%),radial-gradient(70% 80% at 90% 100%,var(--c2,#1b1033),transparent 60%),#0d0d14}
+  .exp-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  a.exp:hover .exp-thumb img{transform:scale(1.04)}
+  .exp-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px}
+  .exp-ph b{font-size:clamp(20px,2.4vw,28px);font-weight:500;letter-spacing:-.03em;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.4)}
+  .exp-ph small{display:block;margin-top:6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .exp-body{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 20px 20px}
+  .exp-body h4{font-size:17px;font-weight:500;letter-spacing:-.02em;margin-bottom:4px}
+  .exp-body p{font-size:12.5px;color:var(--text-muted)}
+  .exp-go{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-strong);
+    font-size:14px;color:var(--text-soft);transition:background var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  a.exp:hover .exp-go{background:var(--violet);border-color:var(--violet);color:#fff;transform:rotate(-8deg)}
+  .exp.soon .exp-go{opacity:.4}
+  .exp-empty{grid-column:1/-1;text-align:center;padding:48px 20px;border:1px dashed var(--line-strong);border-radius:var(--radius-lg);color:var(--text-muted);font-size:14px}
+  .exp-grid li[hidden],.exp-thumb img[hidden]{display:none}
+  .exp-body>div{min-width:0}
+  @media (max-width:1080px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.exp-grid{grid-template-columns:1fr}}
 /* ---------- WORKFLOW ---------- */
 .workflow{padding-top:clamp(56px,7vw,88px);padding-bottom:clamp(30px,3.5vw,44px)}
 .lede{font-size:clamp(19px,2.6vw,30px);max-width:880px;margin-bottom:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1.3}
@@ -316,20 +342,6 @@ ul{list-style:none}
 .f-links a:hover{color:var(--white);border-color:var(--violet-soft);transform:translateY(-2px)}
 .f-note{font-size:12px;color:var(--text-muted)}
 
-/* ---------- GATE ---------- */
-.gate{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:20px;background:rgba(1,1,3,.78);backdrop-filter:blur(8px)}
-.gate.open{display:grid}
-.gate-box{position:relative;width:100%;max-width:440px;border:1px solid var(--line-strong);border-radius:var(--radius-lg);background:var(--surface-2);padding:32px 30px;text-align:center}
-.gate-close{position:absolute;top:12px;right:12px;width:34px;height:34px;border:none;border-radius:10px;background:rgba(255,255,255,.07);cursor:pointer}
-.gate-icon{width:34px;height:34px;margin:0 auto 12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A8A8B0' stroke-width='2'%3E%3Crect x='4' y='10' width='16' height='11' rx='2.5'/%3E%3Cpath d='M8 10V7a4 4 0 018 0v3'/%3E%3C/svg%3E") no-repeat center/contain}
-.gate-box h2{font-size:19px;margin-bottom:10px}
-.gate-sub{font-size:13.5px;color:var(--text-soft);margin-bottom:20px}
-.gate-field input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--text);font-size:14px}
-.gate-err{display:none;font-size:12.5px;color:#FF7A7A;margin-top:10px}
-.gate-err.show{display:block}
-.gate-actions{display:flex;gap:10px;margin-top:18px}
-.gate-actions .btn{flex:1;justify-content:center;padding:12px 18px;font-size:13.5px}
-
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1080px){
   .logo-wall{grid-template-columns:repeat(4,1fr)}
@@ -385,6 +397,7 @@ ul{list-style:none}
   </button>
   <div class="nav-links" id="navLinks">
     <a href="#work">Work</a>
+    <a href="#experiments">Experiments</a>
     <a href="#workflow">AI Workflow</a>
     <a href="#toolkit">Toolkit</a>
     <a href="#experience">Experience</a>
@@ -457,7 +470,7 @@ ul{list-style:none}
 
   <p class="work-label reveal">
     <span class="pill"><span class="dot-live" aria-hidden="true"></span> Open access</span>
-    <span>Two full case studies</span>
+    <span>Featured case studies</span>
     <span class="line-rule"></span>
   </p>
 
@@ -511,68 +524,79 @@ ul{list-style:none}
   </article>
 
   <p class="work-label reveal" style="margin-top:clamp(56px,7vw,92px)">
-    <span class="pill"><span class="ico-lock" aria-hidden="true"></span> Password protected</span>
-    <span>Client-confidential work</span>
+    <span class="pill"><span class="dot-live" aria-hidden="true"></span> Open access</span>
+    <span>More enterprise case studies</span>
     <span class="line-rule"></span>
   </p>
 
   <div class="locked-grid">
-    <button class="locked-card reveal" type="button" data-href="https://www.behance.net/lakshmanankurichi" data-case="AkzoNobel — Accessibility Governance Programme">
+    <a class="locked-card reveal" href="case-studies/akzonobel.html">
       <span class="lc-thumb"><img src="assets/case-accessibility.jpg" alt="AkzoNobel Visualizer mobile app colour discovery screen" loading="lazy" /></span>
       <span class="lc-pad">
         <span class="lc-year">2023 — 2025 · AkzoNobel</span>
         <h3>Accessibility Governance Programme</h3>
         <span class="lc-desc">A WCAG 2.1 AA governance framework across the Visualizer, Canopy, Wood and Cooper product family — audit criteria, remediation patterns and a repeatable sign-off checklist owned by design and engineering.</span>
-        <ul class="lc-tags"><li>Accessibility</li><li>WCAG 2.1 AA</li><li>Governance</li><li>iWin Award</li></ul>
-        <span class="lc-cta">Request access <span class="arrow" aria-hidden="true">→</span></span>
+        <ul class="lc-tags"><li>Accessibility</li><li>WCAG 2.1 AA</li><li>Governance</li><li>iWin Award</li><li>3.21 → 6.11:1</li></ul>
+        <span class="lc-cta">Read the case study <span class="arrow" aria-hidden="true">→</span></span>
       </span>
-    </button>
+    </a>
 
-    <button class="locked-card reveal" type="button" data-href="https://www.behance.net/lakshmanankurichi" data-case="LERETA — Tax Filing &amp; Compliance Platform">
+    <a class="locked-card reveal" href="case-studies/lereta.html">
       <span class="lc-thumb"><img src="assets/case-lereta.jpg" alt="LERETA procurement and compliance dashboard on laptop and phone" loading="lazy" /></span>
       <span class="lc-pad">
         <span class="lc-year">2025 — 2026 · LERETA</span>
         <h3>Tax Filing &amp; Compliance Platform</h3>
         <span class="lc-desc">A high-volume filing workflow where one mis-keyed parcel becomes a compliance event. End-to-end workflow mapping, validation and exception-handling rules, and a review queue that surfaces risk first.</span>
         <ul class="lc-tags"><li>Fintech</li><li>Workflow UX</li><li>AI-assisted</li><li>Enterprise</li></ul>
-        <span class="lc-cta">Request access <span class="arrow" aria-hidden="true">→</span></span>
+        <span class="lc-cta">Read the case study <span class="arrow" aria-hidden="true">→</span></span>
       </span>
-    </button>
+    </a>
 
-    <button class="locked-card reveal" type="button" data-href="https://www.behance.net/lakshmanankurichi" data-case="Schneider Electric — E-commerce &amp; Catalogue Integration">
+    <a class="locked-card reveal" href="case-studies/schneider.html">
       <span class="lc-thumb"><img src="assets/case-schneider.jpg" alt="Electrical products e-commerce catalogue storefront on a laptop" loading="lazy" /></span>
       <span class="lc-pad">
         <span class="lc-year">2022 — 2023 · Schneider Electric</span>
         <h3>E-commerce &amp; Catalogue Integration</h3>
         <span class="lc-desc">Bringing a deeply technical product catalogue into a commerce experience: configurable products, spec-heavy comparison and a quote-to-cart path that works for distributors and direct buyers alike.</span>
         <ul class="lc-tags"><li>E-commerce</li><li>B2B</li><li>Design System</li></ul>
-        <span class="lc-cta">Request access <span class="arrow" aria-hidden="true">→</span></span>
+        <span class="lc-cta">Read the case study <span class="arrow" aria-hidden="true">→</span></span>
       </span>
-    </button>
+    </a>
 
-    <button class="locked-card reveal" type="button" data-href="https://www.behance.net/lakshmanankurichi" data-case="LTIMindtree — Shared Services &amp; Insurance Portals">
+    <a class="locked-card reveal" href="case-studies/ltimindtree.html">
       <span class="lc-thumb"><img src="assets/case-sharedservices.jpg" alt="Employee shared services portal with payroll and benefits dashboards on laptop and phone" loading="lazy" /></span>
       <span class="lc-pad">
         <span class="lc-year">2022 — 2024 · LTIMindtree</span>
         <h3>Shared Services &amp; Insurance Portals</h3>
         <span class="lc-desc">A cluster of internal platforms — Shared Services Centre, an insurance AI portal and a student enrolment journey. Role-based access, dense data and forms simple enough for first-timers, fast enough for daily operators.</span>
         <ul class="lc-tags"><li>Enterprise</li><li>Insurance</li><li>Forms UX</li></ul>
-        <span class="lc-cta">Request access <span class="arrow" aria-hidden="true">→</span></span>
+        <span class="lc-cta">Read the case study <span class="arrow" aria-hidden="true">→</span></span>
       </span>
-    </button>
+    </a>
   </div>
 
-  <p class="access-note reveal">
-    <span>These case studies contain client-confidential material.</span>
-    <a href="mailto:lakshmanan.design@outlook.com?subject=Case%20study%20access%20request">Email me for the password →</a>
+</section>
+
+<!-- ============ EXPERIMENTS ============ -->
+<section class="section experiments" id="experiments" aria-labelledby="exp-h">
+  <p class="section-meta reveal">
+    <span class="num">02</span><span>Experiments</span><span class="line-rule"></span><span>Play · Prototype · Ship</span>
   </p>
+  <div class="exp-head reveal">
+    <div>
+      <h3 id="exp-h">Experiments</h3>
+      <p>A space for creative prototypes, interaction explorations and AI-powered builds.</p>
+    </div>
+  </div>
+  <div class="filters reveal" id="expFilters" role="group" aria-label="Filter experiments"></div>
+  <ul class="exp-grid" id="expGrid" aria-live="polite"></ul>
 </section>
 
 <!-- ============ AI WORKFLOW ============ -->
 <section class="section workflow" id="workflow" aria-labelledby="wf-h">
   <h2 class="sr-only" id="wf-h">AI-augmented delivery</h2>
   <p class="section-meta reveal">
-    <span class="num">02</span><span>AI-Augmented Delivery</span><span class="line-rule"></span><span>How I ship</span>
+    <span class="num">03</span><span>AI-Augmented Delivery</span><span class="line-rule"></span><span>How I ship</span>
   </p>
 
   <p class="lede reveal">
@@ -592,7 +616,7 @@ ul{list-style:none}
 <section class="section toolkit" id="toolkit" aria-labelledby="tk-h">
   <h2 class="sr-only" id="tk-h">Toolkit</h2>
   <p class="section-meta reveal">
-    <span class="num">03</span><span>Toolkit</span><span class="line-rule"></span><span>AI · Design · Research · Delivery</span>
+    <span class="num">04</span><span>Toolkit</span><span class="line-rule"></span><span>AI · Design · Research · Delivery</span>
   </p>
   <div class="toolkit-head reveal">
     <h3>Tools I design, test and ship with</h3>
@@ -611,7 +635,7 @@ ul{list-style:none}
 <section class="section experience" id="experience" aria-labelledby="exp-h">
   <h2 class="sr-only" id="exp-h">Experience</h2>
   <p class="section-meta reveal">
-    <span class="num">04</span><span>Experience</span><span class="line-rule"></span><span>7+ years</span>
+    <span class="num">05</span><span>Experience</span><span class="line-rule"></span><span>7+ years</span>
   </p>
 
   <div class="timeline">
@@ -648,7 +672,7 @@ ul{list-style:none}
 <section class="section skills" id="capabilities" aria-labelledby="cap-h">
   <h2 class="sr-only" id="cap-h">Capabilities</h2>
   <p class="section-meta reveal">
-    <span class="num">05</span><span>Capabilities</span><span class="line-rule"></span><span>What I bring</span>
+    <span class="num">06</span><span>Capabilities</span><span class="line-rule"></span><span>What I bring</span>
   </p>
   <ul class="skill-grid">
     <li class="skill reveal"><h3>Enterprise UX</h3><p>Role-based systems, permission matrices, dense data, workflow logic, validation rules.</p></li>
@@ -664,7 +688,7 @@ ul{list-style:none}
 <section class="section about" id="about" aria-labelledby="about-h">
   <h2 class="sr-only" id="about-h">About</h2>
   <p class="section-meta reveal">
-    <span class="num">06</span><span>About</span><span class="line-rule"></span><span>Chennai, IN</span>
+    <span class="num">07</span><span>About</span><span class="line-rule"></span><span>Chennai, IN</span>
   </p>
   <div class="about-grid">
     <div class="about-copy reveal">
@@ -705,26 +729,6 @@ ul{list-style:none}
   </div>
 </footer>
 
-<!-- ============ PASSWORD GATE ============ -->
-<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-  <div class="gate-box">
-    <button class="gate-close" id="gateClose" type="button" aria-label="Close dialog">✕</button>
-    <div class="gate-icon" aria-hidden="true"></div>
-    <h2 id="gateTitle">Protected case study</h2>
-    <p class="gate-sub"><b id="gateCase">This case study</b> contains client-confidential research, flows and screens. Enter the access password to continue.</p>
-    <form id="gateForm" autocomplete="off">
-      <p class="gate-field">
-        <input type="password" id="gateInput" placeholder="Access password" aria-label="Access password" />
-      </p>
-      <p class="gate-err" id="gateErr" role="alert">That password isn't right — try again or request access.</p>
-      <div class="gate-actions">
-        <button class="btn btn-primary" type="submit">Unlock <span aria-hidden="true">→</span></button>
-        <a class="btn btn-ghost" href="mailto:lakshmanan.design@outlook.com?subject=Case%20study%20access%20request">Request access</a>
-      </div>
-    </form>
-  </div>
-</div>
-
 <script>
 (function(){
   "use strict";
@@ -735,6 +739,8 @@ ul{list-style:none}
      an entry below as ["Display Name","<slug>"]
      ========================================================= */
   var TOOLS = [
+    ["Figma",              "figma"],
+    ["Claude",             "claude"],
     ["ChatGPT",            "chatgpt"],
     ["Google Antigravity", "antigravity"],
     ["Cursor",             "cursor"],
@@ -760,7 +766,7 @@ ul{list-style:none}
            'width="30" height="30" /><span>' + t[0] + '</span></li>';
   }
 
-  var rowA = TOOLS.slice(0, 9), rowB = TOOLS.slice(9);
+  var rowA = TOOLS.slice(0, 10), rowB = TOOLS.slice(10);
   var t1 = document.getElementById("track1"), t2 = document.getElementById("track2");
   if(t1) t1.innerHTML = rowA.map(chip).join("") + rowA.map(chip).join("");
   if(t2) t2.innerHTML = rowB.map(chip).join("") + rowB.map(chip).join("");
@@ -775,7 +781,7 @@ ul{list-style:none}
   var vr = document.getElementById("vibeRow");
   if(vr){
     vr.innerHTML = VIBE.map(function(v){
-      return '<li class="vibe-chip" tabindex="0" data-name="' + v[0] + '">' +
+      return '<li class="vibe-chip" data-name="' + v[0] + '" title="' + v[0] + '">' +
              '<img src="assets/tool-' + v[1] + '.png" alt="' + v[0] + '" loading="lazy" ' +
              'width="26" height="26" /></li>';
     }).join("");
@@ -810,51 +816,65 @@ ul{list-style:none}
     els.forEach(function(el){ el.classList.add("in"); });
   }
 
-  /* ---- Password gate ---- */
-  var gate    = document.getElementById("gate");
-  var gateBox = document.getElementById("gateCase");
-  var input   = document.getElementById("gateInput");
-  var err     = document.getElementById("gateErr");
-  var lastFocus = null, currentCard = null;
-
-  var ACCESS_PASSWORD = "lakshmanan2026";
-
-  function openGate(card){
-    lastFocus = document.activeElement;
-    currentCard = card;
-    gateBox.innerHTML = card.getAttribute("data-case");
-    err.classList.remove("show");
-    input.value = "";
-    gate.classList.add("open");
-    document.body.classList.add("gate-open");
-    setTimeout(function(){ input.focus(); }, 60);
+  /* =========================================================
+     EXPERIMENTS — edit this list only.
+     thumb: put assets/exp-<slug>.gif (animated) or exp-<slug>.jpg / .png.
+            The page tries .gif → .jpg → .png, then falls back to a gradient tile.
+     url:   live link. Leave "" to show the card as "coming soon".
+     cats:  ui · live · web · mobile · animation
+     ========================================================= */
+  var EXPERIMENTS = [
+    {t:"Chennai Metro",              s:"Three.js 3D map",      slug:"chennai-metro",    cats:["web","live"],              url:"https://chennai-metro-pink.vercel.app/", c:["#2f6bff","#0a1a3a"]},
+    {t:"Slice Theory",               s:"WebGL",                slug:"slice-theory",     cats:["web","ui","live"],         url:"https://slice-theory.netlify.app/",      c:["#e2a6a0","#3a1414"]},
+    {t:"Tesla Game",                 s:"Game",                 slug:"tesla-game",       cats:["web","live"],              url:"https://teslaroadstergame.vercel.app/",  c:["#e31937","#0b0b12"]},
+    {t:"Gravity Sketch",             s:"Web app",              slug:"gravity-sketch",   cats:["web","animation","live"],  url:"https://gravity-sketchpad-pro.vercel.app/", c:["#22d3ee","#0b0b0b"]},
+    {t:"Job Applications Management",s:"Web app",              slug:"job-tracker",      cats:["web","ui","live"],         url:"https://jobflowlivefeed.vercel.app/",    c:["#4f46e5","#101028"]},
+    {t:"Tab Harbor",                 s:"Web app",              slug:"tab-harbor",       cats:["web","ui","live"],         url:"https://tab-harbor-two.vercel.app/",     c:["#22b8cf","#06101f"]},
+    {t:"Kaapi Ritual",               s:"3D interactive web",   slug:"kaapi-ritual",     cats:["web","animation","live"],  url:"https://kaaapi.netlify.app/",            c:["#b45309","#1c0d05"]},
+    {t:"Other Eyes",                 s:"Video player",         slug:"other-eyes",       cats:["ui","animation"],          url:"", c:["#c9a24a","#1a1408"]},
+    <!--{t:"AI Research Buddy",          s:"Web app",              slug:"ai-research-buddy",cats:["web","ui"],                url:"", c:["#7c3aed","#120a24"]},-->
+    <!--{t:"Motion Library",             s:"UI animation",         slug:"motion-library",   cats:["animation","ui"],          url:"", c:["#ec4899","#1a0a2e"]}-->
+  ];
+  var FILTERS = [["all","All"],["ui","UI"],["live","Live Apps"],["web","Web Apps"],["mobile","Mobile Apps"],["animation","Animation"]];
+  var fWrap = document.getElementById("expFilters"), grid = document.getElementById("expGrid");
+  function esc(x){ return String(x).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  if(fWrap && grid){
+    fWrap.innerHTML = FILTERS.map(function(f,i){
+      var n = f[0]==="all" ? EXPERIMENTS.length : EXPERIMENTS.filter(function(e){return e.cats.indexOf(f[0])>-1;}).length;
+      return '<button type="button" class="filter" data-f="'+f[0]+'" aria-pressed="'+(i===0)+'">'+f[1]+'<span class="ct">'+n+'</span></button>';
+    }).join("");
+    grid.innerHTML = EXPERIMENTS.map(function(e){
+      var tag = e.url ? 'a' : 'div';
+      var attrs = e.url ? ' href="'+esc(e.url)+'" target="_blank" rel="noopener noreferrer"' : ' aria-label="'+esc(e.t)+' — link coming soon"';
+      return '<li data-cats="'+e.cats.join(" ")+'"><'+tag+' class="exp'+(e.url?'':' soon')+'"'+attrs+'>'+
+        '<div class="exp-thumb" style="--c1:'+e.c[0]+';--c2:'+e.c[1]+'"><span class="exp-ph" aria-hidden="true"><span><b>'+esc(e.t)+'</b><small>'+esc(e.s)+'</small></span></span>'+
+        '<img alt="'+esc(e.t)+' preview" decoding="async" data-slug="'+e.slug+'" hidden></div>'+
+        '<div class="exp-body"><div><h4>'+esc(e.t)+'</h4><p>'+esc(e.s)+(e.url?'':' · coming soon')+'</p></div><span class="exp-go" aria-hidden="true">↗</span></div>'+
+        '</'+tag+'></li>';
+    }).join("") + '<li class="exp-empty" id="expEmpty" hidden>Nothing here yet. New experiments in this category are on the way.</li>';
+    /* thumbnail loader: .gif → .jpg → .png → gradient tile */
+    [].forEach.call(grid.querySelectorAll("img[data-slug]"),function(img){
+      var exts=["gif","jpg","png"], i=0, slug=img.getAttribute("data-slug");
+      function next(){ if(i>=exts.length){ img.remove(); return; } img.src="assets/exp-"+slug+"."+exts[i++]; }
+      img.addEventListener("load",function(){ img.hidden=false; var ph=img.parentNode.querySelector(".exp-ph"); if(ph) ph.remove(); });
+      img.addEventListener("error",next); next();
+    });
+    fWrap.addEventListener("click",function(ev){
+      var b = ev.target.closest(".filter"); if(!b) return;
+      var f = b.getAttribute("data-f"), shown = 0;
+      [].forEach.call(fWrap.querySelectorAll(".filter"),function(x){ x.setAttribute("aria-pressed", x===b ? "true":"false"); });
+      [].forEach.call(grid.querySelectorAll("li[data-cats]"),function(li){
+        var ok = f==="all" || li.getAttribute("data-cats").split(" ").indexOf(f)>-1;
+        li.hidden = !ok; if(ok) shown++;
+      });
+      document.getElementById("expEmpty").hidden = shown>0;
+    });
   }
-  function closeGate(){
-    gate.classList.remove("open");
-    document.body.classList.remove("gate-open");
-    if(lastFocus) lastFocus.focus();
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll(".locked-card"), function(card){
-    card.addEventListener("click", function(){ openGate(card); });
-  });
-  document.getElementById("gateClose").addEventListener("click", closeGate);
-  gate.addEventListener("click", function(e){ if(e.target === gate) closeGate(); });
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape" && gate.classList.contains("open")) closeGate();
-  });
-  document.getElementById("gateForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    if(input.value.trim().toLowerCase() === ACCESS_PASSWORD.toLowerCase()){
-      err.classList.remove("show");
-      var dest = currentCard && currentCard.getAttribute("data-href");
-      if(dest){ window.open(dest, "_blank", "noopener"); }
-      closeGate();
-    } else {
-      err.classList.add("show");
-      input.select();
-      input.focus();
-    }
+  /* ---- GIF upgrade: same-name .gif in assets/ replaces the still image ---- */
+  [].forEach.call(document.querySelectorAll(".feature-visual img, .lc-thumb img"),function(img){
+    var src = img.getAttribute("src"); if(!/\.(jpe?g|png)$/i.test(src)) return;
+    var gif = src.replace(/\.(jpe?g|png)$/i,".gif"), probe = new Image();
+    probe.onload = function(){ img.src = gif; }; probe.src = gif;
   });
 })();
 </script>
